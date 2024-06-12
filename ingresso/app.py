@@ -8,13 +8,13 @@ app = Flask(__name__, template_folder='.')
 def inserir():
 	if request.method == 'POST':
 		cpf   = request.values.get('cpf')
-		obj={"documento":cpf}
+		obj={"cpf":cpf}
 		txt = json.dumps(obj)
-		resposta = requests.post(url="http://localhost:5002/valida", data=txt)
+		resposta = requests.post(url="http://localhost:5002/certificado", data=txt)
 		txt = resposta.content
 		obj = json.loads(txt)
 		if obj ['status']==False:
-			return 'CPF Inválido'
+			return 'não tem ensino médio'
 		nome  = request.values.get('nome')
 		curso = request.values.get('curso')
 		chave = ''
