@@ -58,6 +58,23 @@ def certificado():
 			obj = {"status":False}
 
 		return json.dumps(obj)
+
+@app.route('/certificadoes', methods=['POST'])
+def certificadoes():
+		cpf = request.get_data()
+		obj = json.loads(cpf)
+		cpf=obj['cpf']
+		select = "select id, cpf from registro where cpf = '" + cpf + "' and nivel = 'ES' order by id; "
+		conexao = sqlite3.connect('banco.data')
+		resultado = conexao.execute(select).fetchall()
+		conexao.close()
+		if (len(resultado)>0):
+			obj = {"status":True}
+		else:
+			obj = {"status":False}
+
+		return json.dumps(obj)
+
 		
 		
 	
