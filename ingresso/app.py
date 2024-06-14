@@ -15,6 +15,14 @@ def inserir():
 		obj = json.loads(txt)
 		if obj ['status']==False:
 			return 'não tem ensino médio'
+		cpf   = request.values.get('cpf')
+		obj={"cpf":cpf}
+		txt = json.dumps(obj)
+		resposta = requests.post(url="http://localhost:5002/certificadoes", data=txt)
+		txt = resposta.content
+		obj = json.loads(txt)
+		if obj ['status']==True:
+			return 'já possui ensino superior'
 		nome  = request.values.get('nome')
 		curso = request.values.get('curso')
 		chave = ''
