@@ -1,0 +1,12 @@
+		{% extends "layout.html" %}
+		{% block conteudo %}
+		<h2>Compre sua passagem</h2>
+        <h2>preencha o formulario</h2>
+        <form>
+            <input type="hidden" name="id" value="{{vooid}}" />
+            <input type="hidden" name="voo" value="{{voonome}}" />
+            <p><input type="text" name="cpf" placeholder="Digite seu CPF" /></p>
+            <p><input type="text" name="nome" placeholder="Digite seu nome" /></p>
+            <p><button type="submit" formmethod="post" formaction="/confirmar">Comprar</button></p>
+        </form>
+		{% endblock %}

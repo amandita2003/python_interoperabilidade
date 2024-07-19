@@ -1,0 +1,41 @@
+		{% extends "layout.html" %}
+		{% block conteudo %}
+		<h2>Escolha seu Voo</h2>
+		<form method="post" action="/listar">
+			<input type="date" name="data">
+			<input type="submit" value="pesquisa">
+		</form>
+		 
+		<table border="1">
+			<tr>
+				<th> id </th>
+				<th> voo </th>
+				<th> aviao </th>
+				<th> origem  </th>
+				<th> chegada  </th>
+				<th> data </th>
+			</tr>
+			{% for tupla in listaGol %}
+				<tr>
+					<td> {{tupla['id']}} </td>
+					<td> {{tupla['voo']}} </td>
+					<td> {{tupla['aviao']}} </td>
+					<td> {{tupla['origem']}} </td>
+					<td> {{tupla['chegada']}} </td>
+					<td> {{tupla['datahora']}} </td>
+					<td> <a href="/comprar?id={{tupla['id']}}&voo={{tupla['voo']}}">comprar</a></td>
+				<tr>
+			{% endfor %}
+			{% for tupla in listaLatam %}
+				<tr>
+					<td> {{tupla['id']}} </td>
+					<td> {{tupla['voo']}} </td>
+					<td> {{tupla['aviao']}} </td>
+					<td> {{tupla['origem']}} </td>
+					<td> {{tupla['chegada']}} </td>
+					<td> {{tupla['datahora']}} </td>
+					<td> <a href="/comprar?id={{tupla['id']}}&voo={{tupla['voo']}}">comprar</a></td>
+				<tr>
+			{% endfor %}
+		</table>
+		{% endblock %}
